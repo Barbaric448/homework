@@ -2,6 +2,35 @@
 
 ## Этап 1: работа с cron
 Для начала запущу cron и задам команду из примера, а затем проверю:
-![image](https://github.com/user-attachments/assets/459da327-f104-46b4-a02c-bce03e5f545f)
+<img src="https://github.com/user-attachments/assets/459da327-f104-46b4-a02c-bce03e5f545f" width=600 height=400>
 ![image](https://github.com/user-attachments/assets/502725d7-bc7a-4977-872b-faa9ba7cf7ac)
 Все действительно работает.
+## Этап 2: выполнение задач
+**1.** Для выполнения первого задания прописываем `crontab -e`, а затем `* * * * * df -h >> ~/disk_usage.log`
+  
+  `* * * * *` – просто чтобы проверить работоспособность. Далее изменю на `*/5 * * * *`
+ 
+  `df -h` – получение информации о дисках
+ 
+  `>>` – дозапись в файл
+ 
+  `~/` – файл для логов будет создан в домашней директории.
+
+Результат через минуту:
+![image](https://github.com/user-attachments/assets/2059de7e-01e0-482c-86b1-7265ecd3f01a)
+
+Далее просто поменял интервал. Задание выполнено!
+
+**2.** Для выполнения второго задания нужно добавить в cron строку `*/30 * * * 1-5 ping -c 4 lichess.org >> ~/server_ping.log`
+  
+  `*/30` – каждые 30 минут
+  
+  `1-5` – будние дни
+  
+  `-c 4` – 4 запроса (чтобы не засорять лог)
+
+Проверка:
+![image](https://github.com/user-attachments/assets/9ee0fba0-7905-4571-aef3-d1bff15bcadc)
+
+**3.** Чтобы удалить все задачи, просто прописал в терминале `crontab -r`:
+![image](https://github.com/user-attachments/assets/59cb809b-609b-46e6-ba0a-ce8972332299)
